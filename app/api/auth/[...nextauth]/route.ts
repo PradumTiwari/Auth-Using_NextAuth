@@ -1,7 +1,11 @@
 import NextAuth from "next-auth";
 import  CredentialsProvider  from "next-auth/providers/credentials";
+import FacebookProvider from 'next-auth/providers/facebook'
+import GithubProvider from "next-auth/providers/github";
+
 const handler=NextAuth({
    providers:[
+   
     CredentialsProvider({
         name:'Email',
         credentials:{
@@ -19,9 +23,11 @@ const handler=NextAuth({
                 name:"Hello"
             };
         },
-    })
+    }),
+
+   
    ],
-   secret:process.env.NEXTAUTH_SECRET 
+   secret:process.env.AUTH_SECRET
 })
 
 export {handler as GET,handler as POST};
